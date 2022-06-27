@@ -1,11 +1,15 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
+const page_limit = 10;
+
 export const axiosCharacters = createAsyncThunk(
   "characters/getCharacters",
-  async () => {
+  async (page) => {
     const res = await axios(
-      "https://www.breakingbadapi.com/api/characters?limit=60"
+      `https://www.breakingbadapi.com/api/characters?limit=${page_limit}&offset=${
+        page * page_limit
+      }`
     );
     return res.data;
   }
@@ -16,6 +20,8 @@ export const charactersSlice = createSlice({
   initialState: {
     items: [],
     isLoading: false,
+    page: 0,
+    lastPage: true,
   },
   reducers: {},
   extraReducers: {
@@ -23,8 +29,12 @@ export const charactersSlice = createSlice({
       state.isLoading = true;
     },
     [axiosCharacters.fulfilled]: (state, action) => {
-      state.items = action.payload;
+      state.items = [...state.items, ...action.payload];
       state.isLoading = false;
+      state.page += 1;
+      if (action.payload.length < 10) {
+        state.lastPage = false;
+      }
     },
   },
 });
