@@ -25,7 +25,7 @@ function Details() {
       {loading && <Loading />}
 
       {char && (
-        <div className="text-center text-3xl mt-8 mb-20">
+        <div className="text-center text-3xl mt-8 mb-20 max-w-lg mx-auto">
           <span>
             <img
               className="w-11/12 md:w-72 lg:w-72 max-h-60 mt-8 mx-2 block mx-auto mb-8"
@@ -33,13 +33,32 @@ function Details() {
               alt={char.name}
             />
           </span>
-          <p>Name: {char.name}</p>
-          <p>Nickname: {char.nickname}</p>
-          <p>Occupation: {char.occupation && char.occupation + " "}</p>
-          <p>Status: {char.status}</p>
-          <p>Portrayed: {char.portrayed}</p>
-          <p>Appearance: {char.appearance && char.appearance + " "}</p>
-          <p>Quotes:</p>
+
+          <p className="p-2">
+            <span className="text-[#A10035]">Name: </span>
+            {char.name}
+          </p>
+          <p className="p-2">
+            <span className="text-[#A10035]">Nickname: </span> {char.nickname}
+          </p>
+          <p className="p-2">
+            <span className="text-[#A10035]">Occupation: </span>{" "}
+            {char.occupation && char.occupation + " "}
+          </p>
+          <p className="p-2">
+            <span className="text-[#A10035]">Status: </span> {char.status}
+          </p>
+          <p className="p-2">
+            <span className="text-[#A10035]">Portrayed: </span> {char.portrayed}
+          </p>
+          <p className="p-2">
+            <span className="text-[#A10035]">Apperance: </span>{" "}
+            {char.appearance && char.appearance + " "}
+          </p>
+          <p className="p-2">
+            <span className="text-[#A10035]">-Quotes- </span>
+          </p>
+
           <div>
             {(quotes || []).map((p) => (
               <div className="m-8 max-w-lg mx-auto" key={p.quote_id}>
@@ -48,12 +67,12 @@ function Details() {
             ))}
           </div>
 
-          {/* <a
+          <a
             className="text-3xl inline-block px-12 py-2.5 bg-red-600 text-white leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out"
             href="/home"
           >
             Back
-          </a> */}
+          </a>
         </div>
       )}
     </div>
