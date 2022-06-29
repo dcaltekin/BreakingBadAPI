@@ -19,18 +19,18 @@ export const charactersSlice = createSlice({
   name: "characters",
   initialState: {
     items: [],
-    isLoading: false,
+    status: "idle",
     page: 0,
     lastPage: true,
   },
   reducers: {},
   extraReducers: {
     [axiosCharacters.pending]: (state, action) => {
-      state.isLoading = true;
+      state.status = "loading";
     },
     [axiosCharacters.fulfilled]: (state, action) => {
       state.items = [...state.items, ...action.payload];
-      state.isLoading = false;
+      state.status = "succeded";
       state.page += 1;
       if (action.payload.length < 10) {
         state.lastPage = false;
