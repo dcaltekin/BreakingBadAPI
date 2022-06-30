@@ -1,13 +1,15 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import Loading from "./Loading";
+import Loading from "../components/Loading";
 
 function Details() {
   const { char_id } = useParams();
   const [char, setChar] = useState(null);
   const [quotes, setQuotes] = useState(null);
   const [loading, setLoading] = useState(true);
+  console.log(process.env.REACT_APP_BASE_URL);
+
   useEffect(() => {
     axios(`https://www.breakingbadapi.com/api/characters/${char_id}`)
       .then((res) => res.data)
