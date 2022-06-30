@@ -8,16 +8,15 @@ function Details() {
   const [char, setChar] = useState(null);
   const [quotes, setQuotes] = useState(null);
   const [loading, setLoading] = useState(true);
-  console.log(process.env.REACT_APP_BASE_URL);
 
   useEffect(() => {
-    axios(`https://www.breakingbadapi.com/api/characters/${char_id}`)
+    axios(`${process.env.REACT_APP_API_BASE_URL}characters/${char_id}`)
       .then((res) => res.data)
       .then((data) => setChar(data[0]))
       .finally(() => setLoading(false));
   }, [char_id]);
   useEffect(() => {
-    axios(`https://www.breakingbadapi.com/api/quotes`)
+    axios(`${process.env.REACT_APP_API_BASE_URL}quotes`)
       .then((res) => res.data)
       .then((data) => setQuotes(data));
   }, []);
