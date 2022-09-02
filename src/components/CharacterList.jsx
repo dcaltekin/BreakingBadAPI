@@ -6,21 +6,31 @@ function CharacterList() {
   const data = useSelector((state) => state.characters.items);
   return (
     <div>
-      <h1 className="text-7xl text-center text-white mt-4">Characters</h1>
-      {data.map((character, index) => (
-        <Link key={index} to={`/detail/${character.char_id}`}>
-          <div className="sm:block md:inline-block  lg:inline-block ml-2 overflow-hidden hover:scale-110  hover:ease-in hover:duration-300	">
-            <img
-              className="w-11/12 md:w-72 lg:w-72 max-h-60 mt-8 mx-2"
-              src={character.img}
-              alt={character.name}
-            />
-            <div className="text-center text-white w-11/12 md:w-72 lg:w-72 mx-2 bg-gradient-to-r from-purple-500 to-pink-500 p-4">
-              {character.name}
+      <h1 className="text-4xl text-center text-black mt-4">Characters</h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 items-center justify-center container mx-auto">
+        {data.map((character, index) => (
+          <div key={index} className="text-center w-full  bg-white  shadow-md">
+            <div className="flex justify-center">
+              <a href={`/detail/${character.char_id}`}>
+                <img
+                  className=" p-8 rounded-full w-60 h-60"
+                  src={character.img}
+                  alt="pro"
+                />
+              </a>
+            </div>
+
+            <div className="px-5 pb-5">
+              <a href={`/detail/${character.char_id}`}>
+                <h5 className="text-base lg:text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
+                  {character.name}
+                </h5>
+              </a>
             </div>
           </div>
-        </Link>
-      ))}
+        ))}
+      </div>
+
       {console.log(data)}
     </div>
   );
