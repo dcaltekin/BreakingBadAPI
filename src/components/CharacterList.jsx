@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+
 import { useSelector } from "react-redux";
 
 function CharacterList() {
@@ -20,9 +20,9 @@ function CharacterList() {
               </a>
             </div>
 
-            <div className="px-5 pb-5">
+            <div className="pb-5">
               <a href={`/detail/${character.char_id}`}>
-                <h5 className="text-base lg:text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
+                <h5 className="text-base lg:text-xl font-semibold tracking-tight text-gray-900">
                   {character.name}
                 </h5>
               </a>
