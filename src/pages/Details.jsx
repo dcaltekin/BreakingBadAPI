@@ -27,13 +27,13 @@ function Details() {
 
       {char && (
         <div className="text-center text-3xl mt-8 mb-20 ">
-          <span>
+          <div className="flex justify-center pb-8">
             <img
-              className="w-11/12 md:w-72 lg:w-72 max-h-60 mt-8 mx-2 block mx-auto mb-8"
+              className="w-60 h-60 rounded-full"
               src={char.img}
               alt={char.name}
             />
-          </span>
+          </div>
           <div className="max-w-lg mx-auto">
             <p className="p-2">
               <span className="text-[#A10035]">Name: </span>
@@ -64,10 +64,10 @@ function Details() {
           <div>
             {(quotes || []).map((p) => (
               <div
-                className="m-8 max-w-lg mx-auto break-words"
+                className="m-8 max-w-lg mx-auto container break-words"
                 key={p.quote_id}
               >
-                {char.name === p.author && <h1>{p.quote}</h1>}
+                {char.name === p.author && p.quote}
               </div>
             ))}
           </div>
