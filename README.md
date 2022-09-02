@@ -3,7 +3,7 @@
 ## What i used in this project:
 
 ### `ReactJS`
-### `React Toolkit`
+### `Redux Toolkit`
 ### `React-Redux`
 ### `React-Router`
 ### `Axios`
